@@ -37,7 +37,7 @@ const nightmare = Nightmare({  show: true });
 //   .catch((error) => console.log(error))
 
 nightmare
-.viewport(1500,1500)
+	.viewport(1500,1500)
 	.goto('http://beachgrit.com')
 	.wait(500)
 	.evaluate(function() {
