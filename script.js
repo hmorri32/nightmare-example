@@ -37,13 +37,13 @@ const nightmare = Nightmare({  show: true });
 //   .catch((error) => console.log(error))
 
 nightmare
-	.viewport(1500,1500)
+.viewport(1500,1500)
 	.goto('http://beachgrit.com')
 	.wait(500)
 	.evaluate(function() {
 		let articles = document.querySelectorAll('article.digest.middle-line.flex')
 		let list     = [].slice.call(articles)
-		let article = document.querySelector('article.digest.middle-line.flex')
+		let article  = document.querySelector('article.digest.middle-line.flex')
 
 		hrefs = list.map((article) => {
 			return article.children['0'].href.concat(article.children['0'].innerText).split('\n')
