@@ -6,7 +6,7 @@ nightmare
   .viewport(1500, 1500)
   .goto("http://beachgrit.com")
   .wait(500)
-  .evaluate(function() {
+  .evaluate(() => {
     let articles = document.querySelectorAll("article.digest.middle-line.flex");
     let list = [].slice.call(articles);
     let article = document.querySelector("article.digest.middle-line.flex");
@@ -16,14 +16,11 @@ nightmare
         .concat(article.children["0"].innerText)
         .split("\n");
     });
-
+// article.digest.blah.map => .children[0].children[0].children[0].src for image url
     return hrefs.map(element => element.filter(n => n != ""));
   })
   .end()
-  .then(function(result) {
-    console.log(result);
-    fs.writeFileSync("output.json", JSON.stringify(result));
-  })
+  .then((result) => fs.writeFileSync("output.json", JSON.stringify(result)))
   .catch(error => console.log(error));	
 
 
